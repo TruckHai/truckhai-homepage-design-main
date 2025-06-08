@@ -1,0 +1,505 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* SF Pro Rounded font face declarations */
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 400;
+  font-style: normal;
+  src: local('SF Pro Rounded Regular'), local('SFProRounded-Regular');
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 600;
+  font-style: normal;
+  src: local('SF Pro Rounded Semibold'), local('SFProRounded-Semibold');
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 700;
+  font-style: normal;
+  src: local('SF Pro Rounded Bold'), local('SFProRounded-Bold');
+}
+
+/* Mobile-first responsive design utilities */
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .hover\:scale-102:hover {
+    transform: none; /* Disable hover effects on mobile */
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.map-background {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 46, 46, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 46, 46, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background-size: 400px 400px, 300px 300px, 100% 100%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .map-background {
+    background-size: 200px 200px, 150px 150px, 100% 100%;
+  }
+}
+
+.tire-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 46, 46, 0.1) 10px,
+    rgba(255, 46, 46, 0.1) 20px
+  );
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Premium animations for smooth transitions */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Enhanced float animation for logistics elements */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Reduce motion for mobile devices */
+@media (max-width: 768px) {
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* New animations for bidding exchange */
+@keyframes marquee {
+  0% { 
+    transform: translate3d(0, 0, 0); 
+  }
+  100% { 
+    transform: translate3d(-50%, 0, 0); 
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-custom {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+.animate-pulse-custom {
+  animation: pulse-custom 2s ease-in-out infinite;
+}
+
+/* Stock ticker style animations */
+@keyframes ticker-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 60s linear infinite;
+}
+
+/* Mobile-first responsive typography and spacing */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+  }
+
+  /* Mobile padding adjustments */
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .py-16 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Mobile button sizes */
+  .px-8 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .py-4 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Mobile card spacing */
+  .gap-8 {
+    gap: 1rem !important;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 0.75rem !important;
+  }
+
+  /* Mobile text sizes */
+  .text-5xl {
+    font-size: 2rem !important;
+    line-height: 2.25rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  .text-xl {
+    font-size: 1.125rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  /* Mobile margin adjustments */
+  .mb-12 {
+    margin-bottom: 2rem !important;
+  }
+
+  .mb-16 {
+    margin-bottom: 3rem !important;
+  }
+
+  .mt-16 {
+    margin-top: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Extra small mobile adjustments */
+  .px-6 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .py-16 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .text-5xl {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  /* Mobile card padding */
+  .p-12 {
+    padding: 1.5rem !important;
+  }
+
+  .p-8 {
+    padding: 1rem !important;
+  }
+
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Touch-friendly interactive elements */
+@media (max-width: 768px) {
+  button, .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile cards */
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+
+  .rounded-full {
+    border-radius: 9999px;
+  }
+
+  /* Mobile-friendly shadows */
+  .shadow-xl {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-2xl {
+    box-shadow: 0 15px 30px -6px rgba(0, 0, 0, 0.1), 0 6px 12px -4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 1024px) {
+  .lg\:flex {
+    display: none !important;
+  }
+
+  .lg\:hidden {
+    display: block !important;
+  }
+}
+
+/* Mobile grid improvements */
+@media (max-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile flexbox improvements */
+@media (max-width: 640px) {
+  .sm\:flex-row {
+    flex-direction: column !important;
+  }
+
+  .flex-col.sm\:flex-row {
+    flex-direction: column !important;
+  }
+
+  .space-x-4 > * + * {
+    margin-left: 0 !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .space-x-8 > * + * {
+    margin-left: 0 !important;
+    margin-top: 1rem !important;
+  }
+}
+
+/* Mobile accordion improvements */
+@media (max-width: 768px) {
+  .accordion-trigger {
+    padding: 1rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .accordion-content {
+    padding-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+/* Mobile badge improvements */
+@media (max-width: 640px) {
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Mobile-friendly max widths */
+@media (max-width: 768px) {
+  .max-w-7xl {
+    max-width: 100% !important;
+  }
+
+  .max-w-3xl {
+    max-width: 100% !important;
+  }
+
+  .max-w-lg {
+    max-width: 100% !important;
+  }
+}
