@@ -24,7 +24,7 @@ const SupportSection = () => {
                 <MessageCircle className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-truck-black mb-4">
-                Live Chat 💬
+                Live Chat 
               </h3>
               <p className="text-gray-600 mb-6 text-lg">
                 Talk to support instantly
@@ -44,7 +44,7 @@ const SupportSection = () => {
                 <HelpCircle className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-truck-black mb-4">
-                Help Center ❓
+                Help Center 
               </h3>
               <p className="text-gray-600 mb-6 text-lg">
                 FAQs, articles, how-to guides
@@ -66,7 +66,7 @@ const SupportSection = () => {
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div className="flex flex-col items-center">
                   <Phone className="w-6 h-6 text-truck-red mb-2" />
-                  <p className="font-semibold text-truck-black">📞 +91 99999 99999</p>
+                  <p className="font-semibold text-truck-black"> +91 99999 99999</p>
                   <p className="text-sm text-gray-600">
                     <Clock className="w-4 h-4 inline mr-1" />
                     Mon–Sat: 10am–7pm
@@ -74,7 +74,7 @@ const SupportSection = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <Mail className="w-6 h-6 text-truck-red mb-2" />
-                  <p className="font-semibold text-truck-black">✉️ support@truckhai.com</p>
+                  <p className="font-semibold text-truck-black"> support@truckhai.com</p>
                   <p className="text-sm text-gray-600">Response within 2 hours</p>
                 </div>
                 <div className="flex flex-col items-center">

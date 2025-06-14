@@ -1,19 +1,28 @@
-
+import React, { useState } from 'react';
 import { Truck, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LoginModal from './LoginModal';
 
 const Footer = () => {
   const navigate = useNavigate();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [loginRole, setLoginRole] = useState<'broker' | 'fleet' | 'corporate'>('broker');
+
+  const handleLoginSuccess = (role: 'broker' | 'fleet' | 'corporate') => {
+    console.log(`Login successful for ${role}`);
+  };
 
   const handleNavigation = (path: string, external = false) => {
     if (external) {
       window.open(path, '_blank');
     } else {
       navigate(path);
+      window.scrollTo({ top: 0, behavior: 'smooth' });   // scroll to top after routing
     }
   };
 
   return (
+    <>
     <footer className="bg-truck-gray py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
@@ -62,8 +71,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  onClick={() => handleNavigation('/broker/dashboard')} 
+                 <a
+                  onClick={() => {
+                    setLoginRole('broker');
+                    setIsLoginModalOpen(true);
+                  }} 
                   className="text-gray-600 hover:text-truck-red transition-colors cursor-pointer"
                 >
                   Broker Dashboard
@@ -71,7 +83,10 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  onClick={() => handleNavigation('/fleet/dashboard')} 
+                  onClick={() => {
+                    setLoginRole('fleet');
+                    setIsLoginModalOpen(true);
+                  }}
                   className="text-gray-600 hover:text-truck-red transition-colors cursor-pointer"
                 >
                   Fleet Dashboard
@@ -79,7 +94,11 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  onClick={() => handleNavigation('/corporate/dashboard')} 
+                  
+                  onClick={() => {
+                    setLoginRole('corporate');
+                    setIsLoginModalOpen(true);
+                  }}
                   className="text-gray-600 hover:text-truck-red transition-colors cursor-pointer"
                 >
                   Corporate Dashboard
@@ -155,6 +174,13 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    <LoginModal
+      isOpen={isLoginModalOpen}
+      onClose={() => setIsLoginModalOpen(false)}
+      onLoginSuccess={handleLoginSuccess}
+      initialTab={loginRole}
+    />
+    </>
   );
 };
 

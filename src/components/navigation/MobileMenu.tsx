@@ -26,7 +26,7 @@ const MobileMenu = ({ isOpen, navLinks, activeLink, onNavClick, onContactClick, 
           <button
             key={link.name}
             onClick={() => onNavClick(link)}
-            className={`block w-full text-left font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF3B30] ${
+            className={`block w-full text-left font-medium transition-colors duration-200 focus:outline-none  ${
               activeLink === link.name ? 'text-[#FF3B30]' : 'text-[#1A1A1A] hover:text-[#FF3B30]'
             }`}
             style={{ fontFamily: 'Poppins, sans-serif' }}

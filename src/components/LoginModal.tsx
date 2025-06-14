@@ -10,17 +10,27 @@ interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   onLoginSuccess: (role: 'broker' | 'fleet' | 'corporate') => void;
+  /** Which tab should be active when the modal opens */
+  initialTab?: 'broker' | 'fleet' | 'corporate';
 }
 
-const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps) => {
+const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialTab = 'broker' }: LoginModalProps) => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'broker' | 'fleet' | 'corporate'>('broker');
+  const [activeTab, setActiveTab] = useState<'broker' | 'fleet' | 'corporate'>(initialTab);
   const [step, setStep] = useState<'login' | 'otp'>('login');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [countdown, setCountdown] = useState(0);
   const [isEmailLogin, setIsEmailLogin] = useState(false);
+
+   // When the modal opens, set the correct default tab
+  React.useEffect(() => {
+    if (isOpen) {
+      setActiveTab(initialTab);
+      setIsEmailLogin(initialTab === 'corporate');
+    }
+  }, [isOpen, initialTab]);
 
   const handlePhoneSubmit = () => {
     if (phoneNumber.length === 10) {
@@ -78,6 +88,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps) => {
     setOtp('');
     setCountdown(0);
     setIsEmailLogin(false);
+    setActiveTab(initialTab);
   };
 
   return (

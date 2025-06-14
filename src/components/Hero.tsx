@@ -113,7 +113,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="hero relative min-h-screen flex items-center justify-center overflow-hidden pt-8 lg:pt-10">
+      <section id="hero" className="hero relative min-h-screen flex items-center justify-center overflow-hidden pt-8 lg:pt-10">
         {/* More subtle grid background with red gradient */}
         <div 
           className="absolute inset-0 z-0"

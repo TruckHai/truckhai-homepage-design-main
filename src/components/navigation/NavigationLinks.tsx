@@ -19,7 +19,7 @@ const NavigationLinks = ({ navLinks, activeLink, onNavClick }: NavigationLinksPr
         <button
           key={link.name}
           onClick={() => onNavClick(link)}
-          className={`relative font-semibold text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF3B30] focus:ring-offset-2 ${
+          className={`relative font-semibold text-base transition-all duration-200 focus:outline-none  ${
             activeLink === link.name ? 'text-[#1A1A1A]' : 'text-[#1A1A1A] hover:text-[#FF3B30]'
           }`}
           style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px', lineHeight: '24px' }}

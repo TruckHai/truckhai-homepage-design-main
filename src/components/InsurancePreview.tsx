@@ -28,16 +28,19 @@ const InsurancePreview = () => {
 
   const handleCardClick = () => {
     navigate('/insurance');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLearnMoreClick = (e) => {
     e.stopPropagation();
     navigate('/insurance');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSettingsClick = (e) => {
     e.stopPropagation();
     navigate('/insurance');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

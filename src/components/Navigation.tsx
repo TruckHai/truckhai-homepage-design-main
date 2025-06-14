@@ -27,11 +27,13 @@ const Navigation = () => {
     setActiveLink(link.name);
     setIsMenuOpen(false);
     
-    // Smooth scroll to section
+    // Smooth scroll to section or navigate home if section is missing
     const element = document.querySelector(link.anchor);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    }
+    }else {
+      window.location.href = '/' + link.anchor;
+     } // jump to home with anchor
   };
 
   const handleLogoClick = () => {
@@ -89,7 +91,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden transition-colors duration-200 hover:text-[#FF3B30] focus:outline-none focus:ring-2 focus:ring-[#FF3B30] focus:ring-offset-2"
+            className="p-2.5 lg:hidden transition-colors duration-200 hover:text-[#FF3B30] focus:outline-none focus:ring-2 focus:ring-[#FF3B30] focus:ring-offset-2"
             style={{ color: '#1A1A1A' }}
             aria-label="Toggle menu"
           >
